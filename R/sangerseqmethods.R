@@ -232,7 +232,11 @@ setMethod("chromatogram", "sangerseq",
     endtrims <- ends
     endtrims[!trimmed] <- NA
     
-    colortranslate <- c(A="green", C="blue", G="black", T="red")
+    ############### modified colors by leicheng 2020-08-02
+    colortranslate <- c(A=rgb(red = 0, green = 0.69, blue =0.31), 
+      C=rgb(red = 0.28, green = 0.43, blue = 0.88),
+      G=rgb(red = 0, green = 0, blue = 0), 
+      T=rgb(red = 0.99, green = 0.26, blue = 0.22))
     colorvector1 <- unname(colortranslate[basecalls1])
     colorvector1[is.na(colorvector1)] <- "purple"
     colorvector2 <- unname(colortranslate[basecalls2])
@@ -271,10 +275,11 @@ setMethod("chromatogram", "sangerseq",
         rect(starttrim, 0, endtrim, ylims[2], col='red', border='transparent', 
              density=15)
       }
-      lines(traces[plotrange,1], col="green")
-      lines(traces[plotrange,2], col="blue")
-      lines(traces[plotrange,3], col="black")
-      lines(traces[plotrange,4], col="red")
+
+      lines(traces[plotrange,1], col=rgb(red = 0.00, green = 0.69, blue =0.31), lwd=1.3)
+      lines(traces[plotrange,2], col=rgb(red = 0.28, green = 0.43, blue = 0.88), lwd=1.3)
+      lines(traces[plotrange,3], col=rgb(red = 0.00, green = 0.00, blue = 0.00), lwd=1.3)
+      lines(traces[plotrange,4], col=rgb(red = 0.99, green = 0.26, blue = 0.22), lwd=1.3)
       mtext(as.character(which(range)[1]), side=2, line=0, cex=cex.mtext)
       
       for(k in 1:length(lab1)) {
