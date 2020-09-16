@@ -1,0 +1,121 @@
+\documentclass[UTF8,a4paper,landscape]{ctexart} 
+% 英文字体配置部分
+%\setmainfont{Arial}
+%\setsansfont{Source Sans Pro}
+%\setmonofont{Source Code Pro}
+% 中文字体配置部分
+%\usepackage{xeCJK}%中文字体
+%\setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}
+%\setCJKsansfont{黑体}
+%\setCJKmonofont{仿宋_GB2312}%中文等宽字体
+
+\usepackage{fullpage}
+\usepackage{pdflscape}
+\usepackage{geometry}
+\usepackage{needspace}
+\usepackage{texshade}
+\geometry{verbose,tmargin=1.8cm,bmargin=1.8cm,lmargin=1.8cm,rmargin=1.8cm}
+
+\begin{document}
+
+<<echo=FALSE>>=
+options(width=120)
+@
+
+\subsection*{Chromatogram}
+<<chromatogram, echo=FALSE, fig.pos="h", fig.height=6.5, fig.width=9.5>>=
+chromatogram(inputdata(), showcalls="both", trim3=30, 
+                 trim5=30, width=100, showtrim=TRUE, showhets=TRUE, cex.base=2)
+@
+
+\newpage
+
+\subsection*{Alignment}
+% Alignment of \Sexpr{gsub("\\$|_", "\\.", input$seq$name)} sequence data to
+% \Sexpr{inputdata()$note$refname} reference sequence.
+<<alignment_body, tidy=TRUE, echo=FALSE, comment=NA>>=
+align_output = alignchromatogram(inputdata(), 
+                                           trim=input$trimref, 
+                                           refseq=refseq(), 
+                                           trim5=30, 
+                                           trim3=30, 
+                                           block.width=80
+                                           )
+align_text = align_output$alignment
+align_head = gsub(pattern="(^.+)#\\n#\\n#={39}.+$",
+                  replacement="\\1",
+                  x=align_text)
+align_body = gsub(pattern="^.*#={39}(.+?)#-{39}.*$",
+                  replacement="\\1",
+                  x=align_text)
+cat(align_body)
+@
+
+\subsection*{Alternative allele}
+<<alternative, tidy=TRUE, echo=FALSE, comment=NA>>=
+cat(wrap_fixed(align_output$altseq, width=120))
+
+
+@
+
+\subsection*{Reference sequence}
+<<reference, tidy=FALSE, echo=FALSE, comment=NA>>=
+cat(wrap_fixed(align_output$refseq, width=120))
+@
+
+\subsection*{Alignment parameters}
+<<align_head, tidy=TRUE, echo=FALSE, comment=NA>>=
+cat(align_head)
+@
+
+\newpage
+
+\subsection*{Chromatogram2(height=2,width=manual)}
+<<chromatogram2, echo=FALSE, fig.pos="h", fig.height=2, fig.width=9.5>>=
+chromatogram(inputdata(), showcalls="both", trim3=input$trim3, 
+                 trim5=input$trim5, width=input$x, showtrim=input$showtrim,
+                showhets=TRUE, cex.base=2, height=2)
+@
+
+\subsection*{Chromatogram3(height=2,width=40)}
+<<chromatogram3, echo=FALSE, fig.pos="h", fig.height=1.6, fig.width=9.5>>=
+chromatogram(inputdata(), showcalls="both", trim3=input$trim3, 
+                 trim5=input$trim5, width=40, showtrim=input$showtrim,
+                showhets=TRUE, cex.base=2, height=2)
+@
+
+@
+
+\subsection*{Chromatogram4(height=2,width=50)}
+<<chromatogram4, echo=FALSE, fig.pos="h", fig.height=1.6, fig.width=9.5>>=
+chromatogram(inputdata(), showcalls="both", trim3=input$trim3, 
+                 trim5=input$trim5, width=50, showtrim=input$showtrim,
+                showhets=TRUE, cex.base=2, height=2)
+@
+
+@
+
+\subsection*{Chromatogram5(height=2,width=60)}
+<<chromatogram5, echo=FALSE, fig.pos="h", fig.height=1.6, fig.width=9.5>>=
+chromatogram(inputdata(), showcalls="both", trim3=input$trim3, 
+                 trim5=input$trim5, width=60, showtrim=input$showtrim,
+                showhets=TRUE, cex.base=2, height=2)
+@
+
+\newpage
+\subsection*{序列比对结果}
+\begin{texshade}{./aln.fasta}
+\seqtype{N}
+\shadingmode[structure]{functional}
+\threshold{50}
+\showconsensus[ColdHot]{bottom}
+\shadingcolors{blues}
+\hidelogoscale
+\shownames{left}
+\nameseq{alle1}{alle1}
+\nameseq{alle2}{alle2}
+\nameseq{ref}{reference}
+\shownumbering{bottom}
+\showlegend
+\end{texshade}
+\end{document}
