@@ -3,7 +3,7 @@ library(knitr)
 library(Biostrings)
 library(msa)
 library(msaR)
-library(sangerseqR)
+library(SangerAlignR)
 library(DECIPHER)
 source('polypeakfunctions.R')
 ## 安装msa，msaR及tinytex
@@ -150,5 +150,5 @@ shinyServer(function(input, output, session) {
       })
     }
   })
-  output$ssRversion <- renderText(as.character(packageVersion("sangerseqR")))
+  output$ssRversion <- renderText(as.character(packageVersion("SangerAlignR")))
 })

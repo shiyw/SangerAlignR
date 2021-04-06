@@ -277,12 +277,33 @@ setMethod("chromatogram", "sangerseq",
       }
       ############### modified colors and added polygon plot by leicheng 2020-08-02
       lines(traces[plotrange,1], col=rgb(red = 0, green = 0.69, blue =0.31), lwd=1.3)
-
+      m <- length(traces[plotrange,1])
+      xy <- data.frame(x=1:m,y=traces[plotrange,1])                    
+      x.poly <- c(xy$x, xy$x[m], xy$x[1]) # Adjoin two x-coordinates
+      y.poly <- c(xy$y, 0, 0) # .. and the corresponding y-coordinates
+      polygon(x.poly, y.poly, col=rgb(red = 0, green = 0.69, blue =0.31, alpha = 0.15), border=NA)
+      
       lines(traces[plotrange,2], col=rgb(red = 0.28, green = 0.43, blue = 0.88), lwd=1.3)
-
+      m <- length(traces[plotrange,2])
+      xy <- data.frame(x=1:m,y=traces[plotrange,2])                     
+      x.poly <- c(xy$x, xy$x[m], xy$x[1]) # Adjoin two x-coordinates
+      y.poly <- c(xy$y, 0, 0) # .. and the corresponding y-coordinates
+      polygon(x.poly, y.poly, col=rgb(red = 0.28, green = 0.43, blue = 0.88, alpha = 0.15), border=NA)
+      
       lines(traces[plotrange,3], col=rgb(red = 0, green = 0, blue = 0), lwd=1.3)
-
+      m <- length(traces[plotrange,3])
+      xy <- data.frame(x=1:m,y=traces[plotrange,3])                      
+      x.poly <- c(xy$x, xy$x[m], xy$x[1]) # Adjoin two x-coordinates
+      y.poly <- c(xy$y, 0, 0) # .. and the corresponding y-coordinates
+      polygon(x.poly, y.poly, col=rgb(red = 0, green = 0, blue = 0, alpha = 0.15), border=NA)
+      
       lines(traces[plotrange,4], col=rgb(red = 0.99, green = 0.26, blue = 0.22), lwd=1.3)
+      m <- length(traces[plotrange,4])
+      xy$x <- 1:m
+      xy <- data.frame(x=1:m,y=traces[plotrange,4])                      
+      x.poly <- c(xy$x, xy$x[m], xy$x[1]) # Adjoin two x-coordinates
+      y.poly <- c(xy$y, 0, 0) # .. and the corresponding y-coordinates
+      polygon(x.poly, y.poly, col=rgb(red = 0.99, green = 0.26, blue = 0.22, alpha = 0.15), border=NA)
 
       mtext(as.character(which(range)[1]), side=2, line=0, cex=cex.mtext)
       
