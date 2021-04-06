@@ -76,9 +76,18 @@ chromatogram(inputdata(), showcalls="both", trim3=input$trim3,
                  trim5=input$trim5, width=input$x, showtrim=input$showtrim,
                 showhets=TRUE, cex.base=2, height=2)
 @
+@
+
+\subsection*{Chromatogram21(height=2,width=25)}
+<<chromatogram21, echo=FALSE, fig.pos="h", fig.height=2, fig.width=9.5>>=
+chromatogram(inputdata(), showcalls="both", trim3=input$trim3, 
+                 trim5=input$trim5, width=25, showtrim=input$showtrim,
+                showhets=TRUE, cex.base=2, height=2)
+@
+@
 
 \subsection*{Chromatogram3(height=2,width=40)}
-<<chromatogram3, echo=FALSE, fig.pos="h", fig.height=1.6, fig.width=9.5>>=
+<<chromatogram3, echo=FALSE, fig.pos="h", fig.height=2, fig.width=9.5>>=
 chromatogram(inputdata(), showcalls="both", trim3=input$trim3, 
                  trim5=input$trim5, width=40, showtrim=input$showtrim,
                 showhets=TRUE, cex.base=2, height=2)
@@ -87,7 +96,7 @@ chromatogram(inputdata(), showcalls="both", trim3=input$trim3,
 @
 
 \subsection*{Chromatogram4(height=2,width=50)}
-<<chromatogram4, echo=FALSE, fig.pos="h", fig.height=1.6, fig.width=9.5>>=
+<<chromatogram4, echo=FALSE, fig.pos="h", fig.height=2, fig.width=9.5>>=
 chromatogram(inputdata(), showcalls="both", trim3=input$trim3, 
                  trim5=input$trim5, width=50, showtrim=input$showtrim,
                 showhets=TRUE, cex.base=2, height=2)
@@ -96,7 +105,7 @@ chromatogram(inputdata(), showcalls="both", trim3=input$trim3,
 @
 
 \subsection*{Chromatogram5(height=2,width=60)}
-<<chromatogram5, echo=FALSE, fig.pos="h", fig.height=1.6, fig.width=9.5>>=
+<<chromatogram5, echo=FALSE, fig.pos="h", fig.height=2, fig.width=9.5>>=
 chromatogram(inputdata(), showcalls="both", trim3=input$trim3, 
                  trim5=input$trim5, width=60, showtrim=input$showtrim,
                 showhets=TRUE, cex.base=2, height=2)

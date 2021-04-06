@@ -19,5 +19,5 @@
 #' @export
 
 PolyPeakParser <- function() {
-  runApp(system.file(package="sangerseqR", "PolyPeakParser"))
+  runApp(system.file(package="SangerAlignR", "PolyPeakParser"))
 }
