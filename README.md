@@ -6,11 +6,17 @@
 Fork from https://gitee.com/x2yline/sanger-align-r
 
 ## 使用
+参考 https://github.com/shiyw/SangerAlignR_demo
+
 ### 依赖
 可以使用renv来管理依赖，也可以手动安装
 
 #### renv
-参考 https://github.com/shiyw/SangerAlignR_demo
+```bash
+git clone https://github.com/shiyw/SangerAlignR_demo.git
+cd SangerAlignR_demo
+```
+
 ```r
 if (!requireNamespace("renv", quietly = TRUE)) {
   install.packages("renv")
