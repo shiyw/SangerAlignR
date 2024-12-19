@@ -1,14 +1,4 @@
-\documentclass[UTF8,a4paper,landscape]{ctexart} 
-% 英文字体配置部分
-%\setmainfont{Arial}
-%\setsansfont{Source Sans Pro}
-%\setmonofont{Source Code Pro}
-% 中文字体配置部分
-%\usepackage{xeCJK}%中文字体
-%\setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}
-%\setCJKsansfont{黑体}
-%\setCJKmonofont{仿宋_GB2312}%中文等宽字体
-
+\documentclass[a4paper,landscape]{article}
 \usepackage{fullpage}
 \usepackage{pdflscape}
 \usepackage{geometry}
@@ -112,7 +102,7 @@ chromatogram(inputdata(), showcalls="both", trim3=input$trim3,
 @
 
 \newpage
-\subsection*{序列比对结果}
+\subsection*{Sequence Alignment Results}
 \begin{texshade}{./aln.fasta}
 \seqtype{N}
 \shadingmode[structure]{functional}
